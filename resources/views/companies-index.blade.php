@@ -10,6 +10,8 @@
                         <li>Email:<strong> {{ $company->email }}</strong></li>
                         <li>{{ $company->logo }}</li>
                         <li>Website: <strong> {{ $company->website }}</strong></li>
+                        <a class="btn btn-success" href="{{ route('company-show', $company->id) }}">Show</a>
+
                         <hr>
                         <br>
                     @endforeach
