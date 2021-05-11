@@ -25,6 +25,7 @@ Route::post('/company/create', 'CompanyController@store')->name('company-store')
 Route::get('/companies/{id}', 'CompanyController@show')->name('company-show');
 Route::get('company/edit/{id}', 'CompanyController@edit')->name('company-edit');
 Route::post('company/update/{id}', 'CompanyController@update')->name('company-update');
+Route::get('company/clear-img/{id}', 'CompanyController@clearImg')->name('clear-img');
 
 
 

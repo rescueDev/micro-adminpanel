@@ -45,7 +45,7 @@
 
                             <div class="col-md-6">
                                 <input id="logo" type="file" class="form-control" name="logo">
-
+                                <a href="{{ route('clear-img', $company->id) }}">Clear Img</a>
                                 @error('logo')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

@@ -165,4 +165,11 @@ class CompanyController extends Controller
     {
         //
     }
+    public function clearImg($id)
+    {
+        $company = Company::findOrFail($id);
+        $company->logo = null;
+        $company->save();
+        return back();
+    }
 }
