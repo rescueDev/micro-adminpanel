@@ -9,7 +9,7 @@
                     <h1>{{ $company->email }}</h1>
                     <h1>{{ $company->logo }}</h1>
                     <h1>{{ $company->wesite }}</h1>
-
+                    <img src="{{ asset('storage/logos/' . $company->logo) }}" alt="logo" height="100px" width="100px">
                 </div>
             </div>
         </div>

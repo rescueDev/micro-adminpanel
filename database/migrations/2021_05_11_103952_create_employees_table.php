@@ -21,6 +21,7 @@ class CreateEmployeesTable extends Migration
             $table->string('phone')->nullable();
 
             $table->bigInteger('company_id')->unsigned();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -6,12 +6,20 @@
                 @if ($companies)
 
                     @foreach ($companies as $company)
-                        <li>Name: <strong> {{ $company->name }}</strong></li>
-                        <li>Email:<strong> {{ $company->email }}</strong></li>
-                        <li>{{ $company->logo }}</li>
-                        <li>Website: <strong> {{ $company->website }}</strong></li>
-                        <a class="btn btn-success" href="{{ route('company-show', $company->id) }}">Show</a>
-                        <a class="btn btn-warning" href="{{ route('company-edit', $company->id) }}">Edit</a>
+                        <div class="d-flex card justify-content-around align-items-center">
+
+                            <img src="{{ asset('storage/logos/' . $company->logo) }}" alt="logo" height="100px"
+                                width="100px">
+                            <h3>Name: <strong> {{ $company->name }}</strong></h3>
+                            <h3>Email:<strong> {{ $company->email }}</strong></h3>
+                            <h3>{{ $company->logo }}</h3>
+                            <h3>Website: <strong> {{ $company->website }}</strong></h3>
+                            <div>
+
+                                <a class="btn btn-success" href="{{ route('company-show', $company->id) }}">Show</a>
+                                <a class="btn btn-warning" href="{{ route('company-edit', $company->id) }}">Edit</a>
+                            </div>
+                        </div>
 
                         <hr>
                         <br>

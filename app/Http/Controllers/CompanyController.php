@@ -161,9 +161,12 @@ class CompanyController extends Controller
      * @param  \App\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Company $company)
+    public function destroy($id)
     {
         //
+    }
+    public function restore($id)
+    {
     }
     public function clearImg($id)
     {

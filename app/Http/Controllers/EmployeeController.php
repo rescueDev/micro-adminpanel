@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Company;
 use App\Employee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EmployeeController extends Controller
 {
@@ -118,7 +119,27 @@ class EmployeeController extends Controller
      * @param  \App\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Employee $employee)
+    public function destroy($id)
     {
+        Employee::destroy($id);
+        return redirect()->route('employees-index');
+    }
+
+    public function restorePage()
+    {
+
+        $deletedEmployees = DB::table('employees')->whereNotNull('deleted_at')->get();
+        // dd($deletedEmployees);
+
+        return view('employees.employee-restore', compact('deletedEmployees'));
+    }
+
+    public function restore(Request $request)
+    {
+        $data = $request->all();
+        // dd($data);
+        $id = $data['name'];
+        Employee::where('id', $id)->restore();
+        return redirect()->route('employees-index');
     }
 }
