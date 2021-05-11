@@ -11,6 +11,7 @@
                         <li>{{ $employee->email }}</li>
                         <li>Phone: <strong> {{ $employee->phone }}</strong></li>
                         <a class="btn btn-success" href="{{ route('employee-show', $employee->id) }}">Show</a>
+                        <a class="btn btn-warning" href="{{ route('employee-edit', $employee->id) }}">Edit</a>
                         <hr>
                         <br>
                     @endforeach

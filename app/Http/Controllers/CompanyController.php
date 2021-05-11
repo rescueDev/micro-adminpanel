@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Company;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -36,21 +37,39 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
 
 
-        $validatedData = $request->validate([
+        $request->validate([
             'name' => 'required|min:5|max:60',
             'email' => 'email|min:8',
             'logo' => 'nullable|file',
             'website' => 'nullable|string'
         ]);
 
-        $company = new Company();
-        $company->name = $validatedData['name'];
-        $company->email = $validatedData['email'];
-        $company->logo = $validatedData['logo'];
-        $company->website = $validatedData['website'];
+        if ($request->has('logo')) {
+
+            $logo = $request->file('logo');
+            $ext = $logo->getClientOriginalExtension();
+
+            $name = rand(100000, 999999) . '_' . time();
+
+            $destFile = $name . '_' . $ext;
+
+            $file = $logo->storeAs('logos', $destFile, 'public');
+
+
+            $company = new Company();
+            $company->name = $request->name;
+            $company->email = $request->email;
+            $company->logo = $destFile;
+            $company->website = $request->website;
+        } else {
+            $company = new Company();
+            $company->name = $request->name;
+            $company->email = $request->email;
+            // $company->logo = $request->logo;
+            $company->website = $request->website;
+        }
 
         $company->save();
 
@@ -76,9 +95,10 @@ class CompanyController extends Controller
      * @param  \App\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function edit(Company $company)
+    public function edit($id)
     {
-        //
+        $company = Company::findOrFail($id);
+        return view('companies.company-edit', compact('company'));
     }
 
     /**
@@ -88,9 +108,51 @@ class CompanyController extends Controller
      * @param  \App\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Company $company)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|min:5|max:60',
+            'email' => 'email|min:8',
+            'logo' => 'nullable|file',
+            'website' => 'nullable|string'
+        ]);
+
+        $company = Company::findOrFail($id);
+
+        if ($request->has('logo')) {
+
+            $fileName = $company->logo;
+            $file = storage_path('app/public/logos/' . $fileName);
+            File::delete($file);
+
+
+            $logo = $request->file('logo');
+            $ext = $logo->getClientOriginalExtension();
+
+            $name = rand(100000, 999999) . '_' . time();
+
+            $destFile = $name . '_' . $ext;
+
+            $file = $logo->storeAs('logos', $destFile, 'public');
+
+            $company->update([
+
+                'name' => $request->name,
+                'email' =>  $request->email,
+                'logo' => $destFile,
+                'website' => $request->website,
+            ]);
+        } else {
+
+            $company->update([
+
+                'name' => $request->name,
+                'email' =>  $request->email,
+                'website' => $request->website,
+            ]);
+        }
+
+        return redirect()->route('company-show', $company->id);
     }
 
     /**

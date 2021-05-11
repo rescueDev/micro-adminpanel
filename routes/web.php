@@ -22,9 +22,9 @@ Auth::routes();
 Route::get('/companies', 'CompanyController@index')->name('companies-index');
 Route::get('/company/create', 'CompanyController@create')->name('company-create');
 Route::post('/company/create', 'CompanyController@store')->name('company-store');
-Route::get('/companies/${id}', 'CompanyController@show')->name('company-show');
-Route::get('company/edit/${id}', 'CompanyController@edit')->name('company-edit');
-Route::get('company/update/${id}', 'CompanyController@update')->name('company-update');
+Route::get('/companies/{id}', 'CompanyController@show')->name('company-show');
+Route::get('company/edit/{id}', 'CompanyController@edit')->name('company-edit');
+Route::post('company/update/{id}', 'CompanyController@update')->name('company-update');
 
 
 
@@ -32,9 +32,9 @@ Route::get('company/update/${id}', 'CompanyController@update')->name('company-up
 Route::get('/employees', 'EmployeeController@index')->name('employees-index');
 Route::get('/employee/create', 'EmployeeController@create')->name('employee-create');
 Route::post('/employee/create', 'EmployeeController@store')->name('employee-store');
-Route::get('/employee/${id}', 'EmployeeController@show')->name('employee-show');
-Route::get('employee/edit/${id}', 'EmployeeController@edit')->name('employee-edit');
-Route::get('employee/update/${id}', 'EmployeeController@update')->name('employee-update');
+Route::get('/employee/{id}', 'EmployeeController@show')->name('employee-show');
+Route::get('employee/edit/{id}', 'EmployeeController@edit')->name('employee-edit');
+Route::post('employee/update/{id}', 'EmployeeController@update')->name('employee-update');
 
 
 Route::get('/home', 'HomeController@index')->name('home');

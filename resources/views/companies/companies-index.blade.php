@@ -11,6 +11,7 @@
                         <li>{{ $company->logo }}</li>
                         <li>Website: <strong> {{ $company->website }}</strong></li>
                         <a class="btn btn-success" href="{{ route('company-show', $company->id) }}">Show</a>
+                        <a class="btn btn-warning" href="{{ route('company-edit', $company->id) }}">Edit</a>
 
                         <hr>
                         <br>

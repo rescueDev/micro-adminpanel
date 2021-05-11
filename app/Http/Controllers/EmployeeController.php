@@ -81,9 +81,11 @@ class EmployeeController extends Controller
      * @param  \App\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function edit(Employee $employee)
+    public function edit($id)
     {
-        //
+        $companies = Company::all();
+        $employee = Employee::findOrFail($id);
+        return view('employees.employee-edit', compact('employee', 'companies'));
     }
 
     /**
@@ -93,9 +95,21 @@ class EmployeeController extends Controller
      * @param  \App\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Employee $employee)
+    public function update(Request $request, $id)
     {
-        //
+        //validate data
+        $request->validate([
+            'firstname' => 'required|min:5|max:30',
+            'lastname' => 'required|min:5|max:30',
+            'email' => 'nullable|email|min:8',
+            'phone' => 'nullable|string|max:15',
+            'company_id' => 'required|integer',
+
+        ]);
+
+        $employee = Employee::findOrFail($id);
+        $employee->update($request->all());
+        return redirect()->route('employee-show', $employee->id);
     }
 
     /**
@@ -106,6 +120,5 @@ class EmployeeController extends Controller
      */
     public function destroy(Employee $employee)
     {
-        //
     }
 }
