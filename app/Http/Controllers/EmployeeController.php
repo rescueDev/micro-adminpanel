@@ -16,7 +16,7 @@ class EmployeeController extends Controller
     public function index()
     {
         $employees = Employee::all();
-        return view('employees-index', compact('employees'));
+        return view('employees.employees-index', compact('employees'));
     }
 
     /**
@@ -27,7 +27,7 @@ class EmployeeController extends Controller
     public function create()
     {
         $companies = Company::all();
-        return view('employee-create', compact('companies'));
+        return view('employees.employee-create', compact('companies'));
     }
 
     /**
@@ -72,7 +72,7 @@ class EmployeeController extends Controller
     public function show($id)
     {
         $employee = Employee::findOrFail($id);
-        dd($employee);
+        return view('employees.employee-show', compact('employee'));
     }
 
     /**
