@@ -10002,3 +10002,18 @@ h3 {
     border-color: #dee2e6;
   }
 }
+.active {
+  color: #116980 !important;
+  font-weight: bold;
+  background-color: whitesmoke;
+  border-radius: 8px;
+}
+
+@media (max-width: 991.98px) {
+  .active {
+    color: #4c5053 !important;
+    font-weight: bold;
+    background-color: transparent !important;
+    border-radius: 0 !important;
+  }
+}

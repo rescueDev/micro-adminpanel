@@ -6,3 +6,20 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+.active {
+    color: #116980!important;
+    font-weight: bold;
+    background-color:whitesmoke;
+    border-radius: 8px;
+} 
+
+ @include media-breakpoint-down(md) {
+    .active {
+         color: rgb(76, 80, 83) !important;
+        font-weight: bold;
+        background-color:transparent !important;
+        border-radius: 0 !important;
+    
+    }
+}
