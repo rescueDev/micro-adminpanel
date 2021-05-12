@@ -100,6 +100,7 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $data = $request->all();
         //validate data
         $request->validate([
             'firstname' => 'required|min:5|max:30',
@@ -110,7 +111,11 @@ class EmployeeController extends Controller
         ]);
 
         $employee = Employee::findOrFail($id);
-        $employee->update($request->all());
+        $company = Company::findOrFail($data['company_id']);
+        $employee->update($data);
+        $employee->company()->associate($company);
+        $employee->save();
+
         return redirect()->route('employee-show', $employee->id);
     }
 
