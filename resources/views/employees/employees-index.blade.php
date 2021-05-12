@@ -2,7 +2,7 @@
 @section('content')
     <div class="row">
         <div class="col-12 text-center">
-            <div class="col-6 mx-auto mt-3 mb-4">
+            <div class="col-sm-12 col-md-6 mx-auto mt-3 mb-4">
                 <a class="btn btn-outline-success" href="{{ route('employee-create') }}">New Employee</a>
                 <a class="btn btn-outline-secondary" href="{{ route('employee-restore-page') }}">Restore Employee</a>
             </div>
@@ -11,10 +11,10 @@
 
                     <div class="d-flex flex-wrap col-12">
                         @foreach ($employees as $employee)
-                            <div class="col-4 mt-2">
+                            <div class="col-sm-12 col-md-6 col-lg-4 mt-2">
                                 <div class="card text-center">
                                     <div class="card-header mb-2">
-                                        <h2>{{ $employee->firstname . ' ' . $employee->lastname }}</h2>
+                                        <h4>{{ $employee->firstname . ' ' . $employee->lastname }}</h4>
                                     </div>
                                     <div class="card-body">
                                         <h5>{{ $employee->phone }}</h5>

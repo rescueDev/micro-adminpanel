@@ -1,65 +1,40 @@
 <header>
-    <nav class="navbar navbar-expand-sm navbar-light bg-white shadow-sm">
-        <div class="container">
 
-            {{-- Left menu --}}
-            <div class="menu-nav">
-                {{-- Logo --}}
-                <div class="logo-header">
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                    </a>
-                </div>
-            </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+            aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <a class="navbar-brand" href="/">CRM ADMIN PANEL</a>
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
 
+                    <a class="<?php echo $_SERVER['REQUEST_URI'] == '/' ? 'active nav-link' : 'nav-link'; ?>"
+                        href="/">Home</a>
+                </li>
+                <li class="nav-item">
 
-            {{-- Right menu --}}
-            <div class="menu-nav">
+                    <a class="<?php echo $_SERVER['REQUEST_URI'] == '/companies' ? 'active nav-link' : 'nav-link'; ?>"
+                        href="{{ route('companies-index') }}">Companies</a>
+                </li>
+                <li class="nav-item">
+                    <a class="<?php echo $_SERVER['REQUEST_URI'] == '/employees' ? 'active nav-link' : 'nav-link'; ?>"
+                        href="{{ route('employees-index') }}">Employees</a>
+                </li>
+                <li class="nav-item">
+                </li>
+            </ul>
+            <form action="{{ route('logout') }}" method="post">
+                @csrf
+                @method('POST')
+                <button type=" button" name="button" class="btn btn-outline-danger">
+                    {{ __('Logout') }}
+                    <i class="fas fa-home"></i>
+                </button>
+            </form>
 
-                <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ml-auto d-flex">
-                    <!-- Authentication Links -->
-                    @guest
-                        <li class="nav-item">
-
-
-                            <a class="nav-link btn btn-outline-success" href="{{ route('login') }}">
-                                <i class="fas fa-home"></i>
-                                {{ __('Login') }}
-                            </a>
-                        </li>
-
-                    @else
-                        <div class="col-12 d-flex align-items-center justify-content-around">
-                            <h4 class="nav-item">
-                                <a class="<?php echo $_SERVER['REQUEST_URI'] == '/' ? 'active nav-link' : 'nav-link'; ?>"
-                                    href="/">Home</a>
-                            </h4>
-                            <h4 class="nav-item">
-                                <a class="<?php echo $_SERVER['REQUEST_URI'] == '/companies' ? 'active nav-link' : 'nav-link'; ?>"
-                                    href="{{ route('companies-index') }}">Companies</a>
-                            </h4>
-                            <h4 class="nav-item">
-                                <a class="<?php echo $_SERVER['REQUEST_URI'] == '/employees' ? 'active nav-link' : 'nav-link'; ?>"
-                                    href="{{ route('employees-index') }}">Employees</a>
-                            </h4>
-                            <li class="nav-item">
-                                <form action="{{ route('logout') }}" method="post">
-                                    @csrf
-                                    @method('POST')
-                                    <button type=" button" name="button" class="btn btn-outline-danger">
-                                        {{ __('Logout') }}
-                                        <i class="fas fa-home"></i>
-                                    </button>
-                                </form>
-
-
-                            </li>
-
-                        </div>
-                    @endguest
-                </ul>
-
-            </div>
         </div>
     </nav>
+
 </header>

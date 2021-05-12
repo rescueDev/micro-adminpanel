@@ -9,10 +9,10 @@
             @if ($companies)
                 <div class="d-flex flex-wrap col-12">
                     @foreach ($companies as $company)
-                        <div class="col-4 mt-2">
+                        <div class="col-sm-12 col-md-6 col-lg-4 mt-2">
                             <div class="card text-center">
                                 <div class="card-header mb-2">
-                                    <h2>{{ $company->name }}</h2>
+                                    <h4>{{ $company->name }}</h4>
                                 </div>
                                 <img class="img-thumbnail mx-auto" src="{{ asset('storage/logos/' . $company->logo) }}"
                                     alt="logo" width="100px" height="100px">
