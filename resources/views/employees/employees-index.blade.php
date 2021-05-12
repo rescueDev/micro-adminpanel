@@ -9,29 +9,29 @@
             <ul>
                 @if ($employees)
 
-                    <div class="d-flex flex-wrap col-12">
+                    <div class="col-12 ">
                         @foreach ($employees as $employee)
-                            <div class="col-sm-12 col-md-6 col-lg-4 mt-2">
-                                <div class="card text-center">
-                                    <div class="card-header mb-2">
+                            <div class="col-10 mx-auto">
+                                <div class="border text-center d-flex justify-content-around align-items-center"
+                                    style="height:150px ">
+                                    <div class="col text-left">
+                                        <h4>ID: {{ $employee->id }}</h4>
+                                    </div>
+                                    <div class="col text-left pl-4">
                                         <h4>{{ $employee->firstname . ' ' . $employee->lastname }}</h4>
                                     </div>
-                                    <div class="card-body">
-                                        <h5>{{ $employee->phone }}</h5>
-                                        <h5>{{ $employee->email }}</h5>
-                                        <div class="buttons d-flex justify-content-center mx-auto">
-                                            <a href="{{ route('employee-show', $employee->id) }}"
-                                                class="btn btn-primary mr-2">Show</a>
-                                            <a href="{{ route('employee-edit', $employee->id) }}"
-                                                class="btn btn-warning mr-2">Edit</a>
+                                    <div class="col">
 
-                                            <form action="{{ route('employee-delete', $employee->id) }}" method="POST">
-                                                @csrf
-                                                @method('POST')
-                                                <button class="btn btn-danger">Delete</button>
-                                            </form>
-                                        </div>
+                                        <a href="{{ route('employee-show', $employee->id) }}"
+                                            class="btn btn-primary">Show</a>
+                                        <a href="{{ route('employee-edit', $employee->id) }}"
+                                            class="btn btn-warning">Edit</a>
                                     </div>
+                                    <form action="{{ route('employee-delete', $employee->id) }}" method="post">
+                                        @csrf
+                                        @method('POST')
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
                                 </div>
                             </div>
                         @endforeach

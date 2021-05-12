@@ -13,10 +13,11 @@ class AddForeignKeys extends Migration
      */
     public function up()
     {
-          Schema::table('employees', function (Blueprint $table) {
+        Schema::table('employees', function (Blueprint $table) {
             $table->foreign('company_id', 'employee-company')
                 ->references('id')
-                ->on('companies');  //nome tabella da agganciare
+                ->on('companies')
+                ->onDelete('cascade');  //nome tabella da agganciare
         });
     }
 
@@ -27,10 +28,9 @@ class AddForeignKeys extends Migration
      */
     public function down()
     {
-         Schema::table('employees', function (Blueprint $table) {
+        Schema::table('employees', function (Blueprint $table) {
 
             $table->dropForeign('employee-company');
         });
-
     }
 }

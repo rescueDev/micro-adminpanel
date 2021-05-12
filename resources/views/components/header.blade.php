@@ -25,14 +25,21 @@
                 <li class="nav-item">
                 </li>
             </ul>
-            <form action="{{ route('logout') }}" method="post">
-                @csrf
-                @method('POST')
-                <button type=" button" name="button" class="btn btn-outline-danger">
-                    {{ __('Logout') }}
-                    <i class="fas fa-home"></i>
-                </button>
-            </form>
+            @if (!Auth::user())
+                <div class="nav-item">
+                    <a class="btn btn-success" href="{{ route('login') }}">Login</a>
+                </div>
+
+            @else
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    @method('POST')
+                    <button type=" button" name="button" class="btn btn-outline-danger">
+                        {{ __('Logout') }}
+                        <i class="fas fa-home"></i>
+                    </button>
+                </form>
+            @endif
 
         </div>
     </nav>

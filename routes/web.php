@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('micro-admin-panel');
 });
+
 Auth::routes();
 
 //companies routes
@@ -25,6 +26,7 @@ Route::post('/company/create', 'CompanyController@store')->name('company-store')
 Route::get('/companies/{id}', 'CompanyController@show')->name('company-show');
 Route::get('/company/edit/{id}', 'CompanyController@edit')->name('company-edit');
 Route::post('/company/update/{id}', 'CompanyController@update')->name('company-update');
+Route::post('/company/delete/{id}', 'CompanyController@destroy')->name('company-delete');
 Route::get('/company/clear-img/{id}', 'CompanyController@clearImg')->name('clear-img');
 
 

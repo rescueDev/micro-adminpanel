@@ -169,7 +169,9 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $company = Company::findOrFail($id);
+        $company->delete();
+        return redirect()->back();
     }
     public function restore($id)
     {
