@@ -31,13 +31,16 @@
                     @else
                         <div class="col-12 d-flex align-items-center justify-content-around">
                             <h4 class="nav-item">
-                                <a class="nav-link" href="/">Home</a>
+                                <a class="<?php echo $_SERVER['REQUEST_URI'] == '/' ? 'active nav-link' : 'nav-link'; ?>"
+                                    href="/">Home</a>
                             </h4>
                             <h4 class="nav-item">
-                                <a class="nav-link" href="{{ route('companies-index') }}">Companies</a>
+                                <a class="<?php echo $_SERVER['REQUEST_URI'] == '/companies' ? 'active nav-link' : 'nav-link'; ?>"
+                                    href="{{ route('companies-index') }}">Companies</a>
                             </h4>
                             <h4 class="nav-item">
-                                <a class="nav-link" href="{{ route('employees-index') }}">Employees</a>
+                                <a class="<?php echo $_SERVER['REQUEST_URI'] == '/employees' ? 'active nav-link' : 'nav-link'; ?>"
+                                    href="{{ route('employees-index') }}">Employees</a>
                             </h4>
                             <li class="nav-item">
                                 <form action="{{ route('logout') }}" method="post">
