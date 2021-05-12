@@ -71,7 +71,6 @@ class CompanyController extends Controller
             $company = new Company();
             $company->name = $request->name;
             $company->email = $request->email;
-            // $company->logo = $request->logo;
             $company->website = $request->website;
         }
 
@@ -118,7 +117,7 @@ class CompanyController extends Controller
     {
         $request->validate([
             'name' => 'required|min:5|max:60',
-            'email' => 'email|min:8',
+            'email' => 'nullable|email|min:8',
             'logo' => 'nullable|file',
             'website' => 'nullable|string'
         ]);
