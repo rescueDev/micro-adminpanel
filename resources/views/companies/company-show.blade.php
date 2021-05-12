@@ -15,6 +15,15 @@
                             <div class="card-body">
                                 <h5>Email:<strong> {{ $company->email }}</strong></h5>
                                 <h5>Website: <strong> {{ $company->website }}</strong></h5>
+                                <div class="card-header">
+                                    <h2>Employees: </h2>
+                                </div>
+                                <div class="card-body">
+                                    @foreach ($employees as $employee)
+                                        <h5>{{ $employee->firstname . ' ' . $employee->lastname }}</h5>
+                                    @endforeach
+
+                                </div>
 
                                 <a href="{{ route('company-edit', $company->id) }}" class="btn btn-warning">Edit</a>
                             </div>

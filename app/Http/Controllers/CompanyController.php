@@ -90,7 +90,9 @@ class CompanyController extends Controller
     public function show($id)
     {
         $company = Company::findOrFail($id);
-        return view('companies.company-show', compact('company'));
+        $employees = $company->employees()->get();
+        // dd($employees);
+        return view('companies.company-show', compact('company', 'employees'));
     }
 
     /**

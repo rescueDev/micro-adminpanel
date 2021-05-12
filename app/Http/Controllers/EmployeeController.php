@@ -73,7 +73,9 @@ class EmployeeController extends Controller
     public function show($id)
     {
         $employee = Employee::findOrFail($id);
-        return view('employees.employee-show', compact('employee'));
+        $company = $employee->company()->first();
+
+        return view('employees.employee-show', compact('employee', 'company'));
     }
 
     /**

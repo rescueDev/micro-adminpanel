@@ -3,12 +3,30 @@
     <div class="container">
         <div class="row">
             <div class="col-12  d-flex justify-content-center mt-4">
-                <div class="card text-center">
-                    <div class="card-header">Employee</div>
-                    <h1>{{ $employee->firstname }}</h1>
-                    <h1>{{ $employee->lastname }}</h1>
-                    <h1>{{ $employee->email }}</h1>
-                    <h1>{{ $employee->phone }}</h1>
+
+                <div class="d-flex flex-wrap col-12">
+                    <div class="col-12">
+                        <div class="card text-center">
+                            <div class="card-header mb-2">
+                                <h2>{{ $employee->firstname . ' ' . $employee->lastname }}</h2>
+                            </div>
+
+                            <div class="card-body">
+                                <h5>Email:<strong> {{ $employee->email }}</strong></h5>
+                                <h5>Phone: <strong> {{ $employee->phone }}</strong></h5>
+                                <div class="card-header">
+                                    <h2>working for: </h2>
+                                </div>
+                                <div class="card-body">
+
+                                    <h5>{{ $company->name }}</h5>
+
+                                </div>
+
+                                <a href="{{ route('employee-edit', $employee->id) }}" class="btn btn-warning">Edit</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
