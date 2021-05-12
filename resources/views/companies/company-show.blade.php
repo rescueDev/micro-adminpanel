@@ -3,13 +3,23 @@
     <div class="container">
         <div class="row">
             <div class="col-12  d-flex justify-content-center mt-4">
-                <div class="card text-center">
-                    <div class="card-header">Company</div>
-                    <h1>{{ $company->name }}</h1>
-                    <h1>{{ $company->email }}</h1>
-                    <h1>{{ $company->logo }}</h1>
-                    <h1>{{ $company->wesite }}</h1>
-                    <img src="{{ asset('storage/logos/' . $company->logo) }}" alt="logo" height="100px" width="100px">
+
+                <div class="d-flex flex-wrap col-12">
+                    <div class="col-12">
+                        <div class="card text-center">
+                            <div class="card-header mb-2">
+                                <h2>{{ $company->name }}</h2>
+                            </div>
+                            <img class="img-thumbnail mx-auto" src="{{ asset('storage/logos/' . $company->logo) }}"
+                                alt="logo" width="100px" height="100px">
+                            <div class="card-body">
+                                <h5>Email:<strong> {{ $company->email }}</strong></h5>
+                                <h5>Website: <strong> {{ $company->website }}</strong></h5>
+
+                                <a href="{{ route('company-edit', $company->id) }}" class="btn btn-warning">Edit</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,31 +1,36 @@
 @extends('layouts.app')
 @section('content')
     <div class="row">
-        <div class="col-12 text-center">
-            <ul>
-                @if ($companies)
+        <div class="col-12">
+            <div class="text-center mt-4 mb-4">
+                <a class="btn btn-outline-success" href="{{ route('company-create') }}">New Company</a>
+            </div>
 
+            @if ($companies)
+                <div class="d-flex flex-wrap col-12">
                     @foreach ($companies as $company)
-                        <div class="d-flex card justify-content-around align-items-center">
+                        <div class="col-4 mt-2">
+                            <div class="card text-center">
+                                <div class="card-header mb-2">
+                                    <h2>{{ $company->name }}</h2>
+                                </div>
+                                <img class="img-thumbnail mx-auto" src="{{ asset('storage/logos/' . $company->logo) }}"
+                                    alt="logo" width="100px" height="100px">
+                                <div class="card-body">
 
-                            <img src="{{ asset('storage/logos/' . $company->logo) }}" alt="logo" height="100px"
-                                width="100px">
-                            <h3>Name: <strong> {{ $company->name }}</strong></h3>
-                            <h3>Email:<strong> {{ $company->email }}</strong></h3>
-                            <h3>{{ $company->logo }}</h3>
-                            <h3>Website: <strong> {{ $company->website }}</strong></h3>
-                            <div>
-
-                                <a class="btn btn-success" href="{{ route('company-show', $company->id) }}">Show</a>
-                                <a class="btn btn-warning" href="{{ route('company-edit', $company->id) }}">Edit</a>
+                                    <a href="{{ route('company-show', $company->id) }}" class="btn btn-primary">Show</a>
+                                    <a href="{{ route('company-edit', $company->id) }}" class="btn btn-warning">Edit</a>
+                                </div>
                             </div>
                         </div>
-
-                        <hr>
-                        <br>
                     @endforeach
-                @endif
-            </ul>
+                </div>
+            @endif
+        </div>
+
+        <div class="page mx-auto">
+
+            {{ $companies->links() }}
         </div>
     </div>
 @endsection

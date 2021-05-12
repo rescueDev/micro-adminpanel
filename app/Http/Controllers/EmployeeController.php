@@ -16,7 +16,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employees = Employee::all();
+        $employees = Employee::paginate(10);
         return view('employees.employees-index', compact('employees'));
     }
 
@@ -129,7 +129,6 @@ class EmployeeController extends Controller
     {
 
         $deletedEmployees = DB::table('employees')->whereNotNull('deleted_at')->get();
-        // dd($deletedEmployees);
 
         return view('employees.employee-restore', compact('deletedEmployees'));
     }
@@ -137,7 +136,6 @@ class EmployeeController extends Controller
     public function restore(Request $request)
     {
         $data = $request->all();
-        // dd($data);
         $id = $data['name'];
         Employee::where('id', $id)->restore();
         return redirect()->route('employees-index');

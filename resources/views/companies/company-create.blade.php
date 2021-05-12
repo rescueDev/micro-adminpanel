@@ -40,6 +40,10 @@
                             </div>
                         </div>
 
+                        @foreach ($companies as $company)
+
+                        @endforeach
+
                         <div class="form-group row">
                             <label for="logo" class="col-md-4 col-form-label text-md-right">Logo</label>
 

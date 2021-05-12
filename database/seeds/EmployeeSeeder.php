@@ -13,12 +13,12 @@ class EmployeeSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Employee::class, 10)
-        ->make()
-        ->each(function($employee) {
-            $company = Company::inRandomOrder()->first();
-            $employee->company()->associate($company);
-            $employee->save();
-        });
+        factory(App\Employee::class, 40)
+            ->make()
+            ->each(function ($employee) {
+                $company = Company::inRandomOrder()->first();
+                $employee->company()->associate($company);
+                $employee->save();
+            });
     }
 }

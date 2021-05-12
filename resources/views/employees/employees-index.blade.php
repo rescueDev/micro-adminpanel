@@ -3,6 +3,7 @@
     <div class="row">
         <div class="col-12 text-center">
             <div class="col-6 mx-auto mt-3 mb-4">
+                <a class="btn btn-outline-success" href="{{ route('employee-create') }}">New EMployee</a>
                 <a class="btn btn-outline-secondary" href="{{ route('employee-restore-page') }}">Restore Employee</a>
             </div>
             <ul>
@@ -25,6 +26,10 @@
                     @endforeach
                 @endif
             </ul>
+        </div>
+        <div class="page mx-auto">
+
+            {{ $employees->links() }}
         </div>
     </div>
 @endsection

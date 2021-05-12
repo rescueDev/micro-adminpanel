@@ -46,8 +46,11 @@
                             <label for="logo" class="col-md-4 col-form-label text-md-right">Logo</label>
 
                             <div class="col-md-6">
-                                <input id="logo" type="file" class="form-control" name="logo"
-                                    value="{{ $company->logo }}">
+                                @if ($company->logo)
+                                    <label for="logo">{{ $company->logo }}</label>
+
+                                @endif
+                                <input id="logo" type="file" class="form-control" name="logo">
                                 <a href="{{ route('clear-img', $company->id) }}">Clear Img</a>
 
                                 @error('logo')
@@ -80,5 +83,6 @@
                 </div>
             </div>
         </div>
+
     </div>
 @endsection

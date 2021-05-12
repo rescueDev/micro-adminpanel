@@ -20,13 +20,12 @@
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-item">
-                            <button type="button" name="button" class="nav-button">
 
-                                <a class="nav-link" href="{{ route('login') }}">
-                                    <i class="fas fa-home"></i>
-                                    {{ __('Login') }}
-                                </a>
-                            </button>
+
+                            <a class="nav-link btn btn-outline-success" href="{{ route('login') }}">
+                                <i class="fas fa-home"></i>
+                                {{ __('Login') }}
+                            </a>
                         </li>
 
                     @else
@@ -40,6 +39,19 @@
                             <h4 class="nav-item">
                                 <a class="nav-link" href="{{ route('employees-index') }}">Employees</a>
                             </h4>
+                            <li class="nav-item">
+                                <form action="{{ route('logout') }}" method="post">
+                                    @csrf
+                                    @method('POST')
+                                    <button type=" button" name="button" class="btn btn-outline-danger">
+                                        {{ __('Logout') }}
+                                        <i class="fas fa-home"></i>
+                                    </button>
+                                </form>
+
+
+                            </li>
+
                         </div>
                     @endguest
                 </ul>

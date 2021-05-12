@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Company;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class CompanyController extends Controller
 {
@@ -15,9 +17,10 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $companies = Company::all();
+        $companies = Company::paginate(10);
         return view('companies.companies-index', compact('companies'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -26,7 +29,8 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        return view('companies.company-create');
+        $companies = Company::all();
+        return view('companies.company-create', compact('companies'));
     }
 
     /**
