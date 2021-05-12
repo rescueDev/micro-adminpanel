@@ -8,9 +8,8 @@
                 <h4 class="text-light display-sm-2">This is a micro panel service for manage companies and employees</h4>
             </div>
         </div>
-        <div class="row text-center">
-
-            <div class="col border">
+        <div class="row text-center no-gutters">
+            <div class="col-sm-12 col-md-6 border">
                 <div class="p-3">
                     <h2>Manage Companies</h2>
                     <img src="" alt="">
@@ -20,7 +19,7 @@
                     <a href="#" class="btn btn-outline-dark">Demo</a>
                 </div>
             </div>
-            <div class="col border">
+            <div class="col-sm-12 col-md-6  border">
                 <div class="p-3">
                     <h2>Manage Employees</h2>
                     <img src="" alt="">

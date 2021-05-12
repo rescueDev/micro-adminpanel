@@ -107,7 +107,6 @@ class EmployeeController extends Controller
             'email' => 'nullable|email|min:8',
             'phone' => 'nullable|string|max:15',
             'company_id' => 'required|integer',
-
         ]);
 
         $employee = Employee::findOrFail($id);
