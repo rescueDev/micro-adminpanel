@@ -10,13 +10,27 @@
                             <div class="card-header mb-2">
                                 <h2>{{ $company->name }}</h2>
                             </div>
-                            <img class="img-thumbnail mx-auto" src="{{ asset('storage/logos/' . $company->logo) }}"
-                                alt="logo" width="100px" height="100px">
+                            <div class="mx-auto">
+
+                                @if ($company->logo)
+                                    <img class="" src="{{ asset('storage/logos/' . $company->logo) }}" alt="logo"
+                                        width="100px" height="100px">
+                                @else
+                                    <img class="" src="{{ asset('storage/nologo.png') }}" alt="logo" width="100px"
+                                        height="100px">
+                                @endif
+
+                            </div>
+
                             <div class="card-body">
                                 <h5>Email:<strong> {{ $company->email }}</strong></h5>
                                 <h5>Website: <strong> {{ $company->website }}</strong></h5>
                                 <div class="card-header">
-                                    <h2>Employees: </h2>
+                                    @if (count($employees))
+                                        <h2>Employees: </h2>
+                                    @else
+                                        <h2>This company has no employees</h2>
+                                    @endif
                                 </div>
                                 <div class="card-body">
                                     @foreach ($employees as $employee)
