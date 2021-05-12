@@ -17,7 +17,8 @@ Route::get('/', function () {
     return view('micro-admin-panel');
 });
 
-Auth::routes();
+// Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::middleware('auth')->group(function () {
 
