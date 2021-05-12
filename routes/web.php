@@ -46,7 +46,3 @@ Route::middleware('auth')->group(function () {
     Route::post('/employee/delete/{id}', 'EmployeeController@destroy')->name('employee-delete');
     Route::post('/employee/restore', 'EmployeeController@restore')->name('employee-restore');
 });
-
-
-
-Route::get('/home', 'HomeController@index')->name('home');

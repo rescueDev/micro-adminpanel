@@ -14,8 +14,8 @@
 
                             <div class="col-md-6">
                                 <input id="firstname" type="text"
-                                    class="form-control @error('firstname') is-invalid @enderror" name="firstname"
-                                    value="{{ old('name') }}" required min="5" max="30" autocomplete="name" autofocus>
+                                    class="form-control @error('firstname') is-invalid @enderror" name="firstname" required
+                                    minlength="5" maxlength="30" autocomplete="name" autofocus>
 
                                 @error('firstname')
                                     <span class="invalid-feedback" role="alert">
@@ -29,8 +29,8 @@
                             <label for="lastname" class="col-md-4 col-form-label text-md-right">Lastname</label>
 
                             <div class="col-md-6">
-                                <input id="lastname" type="text" class="form-control" min="5" max="30" @error('lastname')
-                                    is-invalid @enderror" name="lastname" value="{{ old('name') }}" required
+                                <input id="lastname" type="text" class="form-control" minlength="5" maxlength="30"
+                                    @error('lastname') is-invalid @enderror" name="lastname" required
                                     autocomplete="lastname" autofocus>
 
                                 @error('lastname')
@@ -46,7 +46,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">Email</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email">
+                                <input id="email" type="email" class="form-control" name="email" minlength="8">
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -60,7 +60,8 @@
                             <label for="phone" class="col-md-4 col-form-label text-md-right">Phone</label>
 
                             <div class="col-md-6">
-                                <input id="phone" type="text" class="form-control" name="phone">
+                                <input id="phone" type="text" class="form-control" name="phone" minlength="8"
+                                    maxlength="30">
 
                                 @error('phone')
                                     <span class="invalid-feedback" role="alert">

@@ -13,7 +13,7 @@
                         @foreach ($companies as $company)
 
 
-                            <div class="border col-sm-12 pt-3 d-md-flex align-items-center justify-content-center"
+                            <div class="rows border col-sm-12 pt-3 d-md-flex align-items-center justify-content-center"
                                 style="min-height: 150px">
                                 <div class="col-sm-12 mt-sm-2 mt-0 col-md-4 ">
                                     @if ($company->logo)
@@ -29,7 +29,8 @@
                                     <h4>{{ $company->name }}</h4>
                                 </div>
                                 <div class="col-sm-12 col-md-4 py-2">
-                                    <div class="d-flex col-sm-6 mx-auto col-md-10 col-lg-8 justify-content-around">
+                                    <div
+                                        class="d-flex col-sm-6 mx-auto col-md-10 col-lg-8 justify-content-around align-items-center">
 
                                         <a href="{{ route('company-show', $company->id) }}" class="btn btn-primary"><i
                                                 class="far fa-eye"></i></a>

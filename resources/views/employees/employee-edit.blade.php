@@ -15,8 +15,8 @@
                             <div class="col-md-6">
                                 <input id="firstname" type="text"
                                     class="form-control @error('firstname') is-invalid @enderror" name="firstname"
-                                    value="{{ $employee->firstname }}" required min="5" max="30" autocomplete="name"
-                                    autofocus>
+                                    value="{{ $employee->firstname }}" required minlength="5" maxlength="30"
+                                    autocomplete="name" autofocus>
 
                                 @error('firstname')
                                     <span class="invalid-feedback" role="alert">
@@ -30,9 +30,9 @@
                             <label for="lastname" class="col-md-4 col-form-label text-md-right">Lastname</label>
 
                             <div class="col-md-6">
-                                <input id="lastname" type="text" class="form-control" min="5" max="30" @error('lastname')
-                                    is-invalid @enderror" name="lastname" required autocomplete="lastname" autofocus
-                                    value="{{ $employee->lastname }}">
+                                <input id="lastname" type="text" class="form-control" minlength="5" maxlength="30"
+                                    @error('lastname') is-invalid @enderror" name="lastname" required
+                                    autocomplete="lastname" autofocus value="{{ $employee->lastname }}">
 
                                 @error('lastname')
                                     <span class="invalid-feedback" role="alert">
