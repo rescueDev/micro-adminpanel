@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-    {{-- <div class="container-fluid"> --}}
     <div class="jumbotron jumbotron-fluid"
         style="height: 50vh;   background: linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)), url('{{ asset('storage/crm.png') }}'); background-size:cover;">
         <div class="py-3 text-center">
