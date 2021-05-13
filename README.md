@@ -27,17 +27,39 @@ Basically, project to manage companies and their employees. Mini-CRM.
 
 
  ## Setup
+ 
+  ### Clone the repo
+  
+   ```
+   git clone
+   ```
     
-   `git clone`
+  ### install node_modules folder  
     
-   `npm install`
+   ```
+   npm install
+   ```
+     
+  ### in file .env put your DB name, password and user then create a new database in your DBMS:  
+      
+  ``` 
+   DB_DATABASE=NAME_OF_YOUR_DB
+   DB_USERNAME=YOUR USERNAME    
+   DB_PASSWORD=YOUR DB PASSWORD HERE
+  ```    
     
-   <p> in file .env put your db password and user then create a new database 
+   ### Migrate DB and seed 
+   
+   ```
+   php artisan migrate:refresh --seed
+   ```
     
-    
-    
-   `php artisan make:migrate --refresh`
-    
-   `php artisan serve`
-    
-   `npm run watch`
+   ### Start your local server
+   
+   ```
+   php artisan serve
+   ```
+  
+   ```
+   npm run watch
+   ```
