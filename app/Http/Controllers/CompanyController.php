@@ -45,7 +45,7 @@ class CompanyController extends Controller
 
         $request->validate([
             'name' => 'required|min:5|max:60',
-            'email' => 'email|min:8',
+            'email' => 'nullable|email|min:8',
             'logo' => 'nullable|file',
             'website' => 'nullable|string'
         ]);

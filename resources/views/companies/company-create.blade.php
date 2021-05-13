@@ -30,7 +30,8 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">Email</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" minlength="8">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                                    name="email" minlength="8">
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -48,7 +49,8 @@
                             <label for="logo" class="col-md-4 col-form-label text-md-right">Logo</label>
 
                             <div class="col-md-6">
-                                <input id="logo" type="file" class="form-control" name="logo">
+                                <input id="logo" type="file" class="form-control @error('logo') is-invalid @enderror"
+                                    name="logo">
                                 <a href="{{ route('clear-img', $company->id) }}">Clear Img</a>
                                 @error('logo')
                                     <span class="invalid-feedback" role="alert">
@@ -63,7 +65,13 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Web site</label>
 
                             <div class="col-md-6">
-                                <input id="website" type="text" class="form-control" name="website">
+                                <input id="website" type="text" class="form-control @error('website') is-invalid @enderror"
+                                    name="website">
+                                @error('logo')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
