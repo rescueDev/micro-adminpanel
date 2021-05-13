@@ -18,8 +18,10 @@
                                     <h2>working for: </h2>
                                 </div>
                                 <div class="card-body">
+                                    <a href="{{ route('company-show', $company->id) }}">
 
-                                    <h5>{{ $company->name }}</h5>
+                                        <h5>{{ $company->name }}</h5>
+                                    </a>
 
                                 </div>
 

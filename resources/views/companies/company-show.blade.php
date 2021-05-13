@@ -34,7 +34,11 @@
                                 </div>
                                 <div class="card-body">
                                     @foreach ($employees as $employee)
-                                        <h5>{{ $employee->firstname . ' ' . $employee->lastname }}</h5>
+                                        <a href="{{ route('employee-show', $employee->id) }}">
+
+                                            <h5>{{ $employee->firstname . ' ' . $employee->lastname }}</h5>
+
+                                        </a>
                                     @endforeach
 
                                 </div>
