@@ -16,7 +16,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employees = Employee::paginate(10);
+        $employees = Employee::orderBy('id', 'desc')->paginate(10);
         return view('employees.employees-index', compact('employees'));
     }
 
