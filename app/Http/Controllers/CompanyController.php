@@ -49,34 +49,33 @@ class CompanyController extends Controller
             'logo' => 'nullable|file',
             'website' => 'nullable|string'
         ]);
+        
+        $company = Company::create([
 
+            'name' => $request->name,
+            'email' => $request->email,
+            'logo' => $request->logo,
+            'website' => $request->website
+
+        ]);        
+        
         if ($request->has('logo')) {
-
+            
             $logo = $request->file('logo');
             $ext = $logo->getClientOriginalExtension();
-
+            
             $name = rand(100000, 999999) . '_' . time();
-
-            $destFile = $name . '_' . $ext;
-
-            $file = $logo->storeAs('logos', $destFile, 'public');
-
-
-            $company = new Company();
-            $company->name = $request->name;
-            $company->email = $request->email;
+            
+            $destFile = $name .  '.' . $ext;
+            
+            $file = $logo->storeAs('logos', $destFile, 'public');            
+            
             $company->logo = $destFile;
-            $company->website = $request->website;
-        } else {
-            $company = new Company();
-            $company->name = $request->name;
-            $company->email = $request->email;
-            $company->website = $request->website;
-        }
-
+            
+        } 
+        
         $company->save();
-
-
+                
         return redirect('/companies');
     }
 
@@ -124,38 +123,41 @@ class CompanyController extends Controller
 
         $company = Company::findOrFail($id);
 
-        if ($request->has('logo')) {
-
-            $fileName = $company->logo;
-            $file = storage_path('app/public/logos/' . $fileName);
-            File::delete($file);
+        // dd($company); 
 
 
-            $logo = $request->file('logo');
-            $ext = $logo->getClientOriginalExtension();
-
-            $name = rand(100000, 999999) . '_' . time();
-
-            $destFile = $name . '_' . $ext;
-
-            $file = $logo->storeAs('logos', $destFile, 'public');
-
-            $company->update([
-
-                'name' => $request->name,
-                'email' =>  $request->email,
-                'logo' => $destFile,
-                'website' => $request->website,
-            ]);
-        } else {
-
-            $company->update([
-
-                'name' => $request->name,
-                'email' =>  $request->email,
-                'website' => $request->website,
-            ]);
-        }
+        DB::table('companies')->where('id', $id)->update([
+            
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'logo' => $request['logo'],
+            'website' => $request['website']
+            
+            ]);     
+            
+            if ($request->has('logo')) {
+                
+                $fileName = $company->logo;
+                $file = storage_path('app/public/logos/' . $fileName);
+                File::delete($file);
+                
+                
+                $logo = $request->file('logo');
+                $ext = $logo->getClientOriginalExtension();
+                
+                $name = rand(100000, 999999) . '_' . time();
+                
+                $destFile = $name . '.' . $ext;
+                
+                $file = $logo->storeAs('logos', $destFile, 'public');
+                
+                $company->logo = $destFile;
+                
+            } 
+            
+            $company->save();
+            
+            // dd($company);
 
         return redirect()->route('company-show', $company->id);
     }
